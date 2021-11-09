@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<body>
+     {% if request.user.is_authenticated %}
+     <h2>Has salido del sitio. Te esperamos pronto ! </h2>
+     {% else %}
+     <h2>Por favor, ingrese a través de la solapa de <a href="{% url 'login' %}">Entrar</a></h2>
+     {% endif %}
+{% include "footer.html" %}
+</body>
+</html>

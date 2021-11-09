@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<head>
+    <meta charset="UTF-8">
+    <title>Busqueda de Licitaciones</title>
+</head>
+<body>
+    <div id="main">
+		<div class="container">
+
+
+<p>Estas buscando: <strong>{{ query }}</strong></p>
+
+{% if licitacion %}
+        <p>Cantidad encontradas: {{ licitacion|length }} licitaciones</p>
+
+
+        <table class="default">
+
+             <tr>
+                 <th><h2>Numero</h2></th>
+                 <th><h2>Nombre</h2></th>
+                 <th><h2>Fecha de apertura</h2></th>
+                 <th><h2>Ofertar</h2></th>
+                 </tr>
+        {% for lic in licitacion  %}
+            <tr>
+                <form action="/generarEvento/" method="post">
+                    {% csrf_token %}
+                    <td><h4><input name="numero" value="{{lic.numero}}" type="hidden">{{lic.numero}}</h4> </td>
+                    <td><h4><input name="nombre" type="hidden" value="{{lic.nombre}}">{{lic.nombre}}</h4> </td>
+                    <input name="query" type="hidden" value="{{ query }}">
+                    <td><h4><input name="fecha_apertura" type="hidden" value="{{ lic.fecha_apertura }}">{{ lic.fecha_apertura }}</h4></td>
+                    {% if lic in query2%}
+                        <td><h4 style = "colour : green">Ofertado</h4></td>
+                    {% else %}
+                        <td><h2><button type="submit" name="ofertar">Ofertar</button></h2></td>
+                    {% endif %}
+                </form>
+            </tr>
+        {% endfor  %}
+        </table>
+
+
+{% else %}
+    <p>No existe el articulo buscado</p>
+{% endif %}
+        </div>
+    </div>
+</body>
+{% include "footer.html" %}
+</html>

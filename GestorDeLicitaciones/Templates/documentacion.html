@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+{% include "header.html" %}
+<body>
+			<!-- Main -->
+				<div id="main">
+					<div class="container">
+						<div class="row main-row">
+							<div class="col-12">
+
+								<section>
+									<h2>Cómo registrarme?</h2>
+									<h3></h3>
+									<p>Para iniciar, cree un <a href="{% url 'register' %}">Nuevo Usuario</a> desde la solapa de <a href="{% url 'register' %}">Registrarse</a>.
+										Se le solicitará que provea un nombre de usuario y contraseña que serán luego utilizados para acceder a todas las herramientas que provee
+									el Gestor</p>
+									<h2>Cómo iniciar?</h2>
+									<h3></h3>
+									<p>Luego de registrar su usuario, podrá acceder con sus credenciales a su cuenta del <strong>Gestor de Licitaciones</strong> desde la solapa <a href="{% url 'login' %}">Entrar</a>.
+										Al hacerlo, nuevas opciones se desplegarán en la barra de herramientas (<a href="{% url 'busqueda' %}">Buscar</a>, <a href="{% url 'mis ofertas' %}">Mis Ofertas</a>,
+										<a href="{% url 'mis datos' %}">Mis Datos</a>, <a href="{% url 'salir' %}">Salir</a>)</p><br>
+
+										<h2>Cómo utilizo las herramientas del Gestor?</h2>
+									<h3></h3>
+									<p>
+											Utilice <a href="{% url 'busqueda' %}">Buscar</a> para encontrar todas las licitaciones publicadas por el Estado
+											Nacional con fecha de apertura vigente. Desde Aquí deberá filtrar agregando una palabra clave para encontrar sus licitaciones de interés.
+											Al hacer click en el botón "Buscar", se desplegará la lista completa de resultados encontrados con información general de la oferta.
+											Encontrará además en el sector derecho de cada licitación, un botón que le permitirá "Ofertar" las licitaciones de interés. Al clickear en él,
+											La licitación seleccionada se incluirá en su lista de <a href="{% url 'mis ofertas' %}">Mis Ofertas</a> y, si tiene configurada una cuenta de GMAIL
+											asociada a su cuenta del <strong>Gestor de Licitaciones</strong>, se le creará automáticamente un evento en su Google Calendar con la fecha y hora de
+											apertura de la oferta.
+										</p>
+										<br>
+									<p>
+											Utilice <a href="{% url 'mis ofertas' %}">Mis Ofertas</a> para encontrar todas las licitaciones publicadas por el Estado
+											Nacional que usted haya previamente seleccionado desde la pestaña de <a href="{% url 'busqueda' %}">Buscar</a>. Desde Aquí deberá filtrar agregando
+											una palabra clave para encontrar sus licitaciones de interés o bien dejar el campo vacío para que se espleguen la totalidad de sus ofertas.
+											Al hacer click en el botón "Buscar", se desplegará la lista completa de resultados encontrados con información general de la oferta.
+											Encontrará además en el sector derecho de cada licitación, un botón que le permitirá "Desvincular Oferta" y otro para "Ver Licitación". Al clickear en "Desvincular
+											Oferta", la licitación seleccionada se eliminará de su lista de <a href="{% url 'mis ofertas' %}">Mis Ofertas</a> junto con toda la información cargada.
+											Por el contrario, si selecciona "Ver Licitación", podrá acceder a la información completa de la licitación en cuestión y podrá ingresar Anexos de cualquier tipo
+											que le permitan almacenar en la nube de manera segura y confiable toda documentación previa y posterior a la oferta (Pliego, declaraciones juradas, garantías,
+											ordenes de adjudicación, ordenes de compra, ordenes de entrega de servicios, planos de obra, facturas, etc.).
+									</p>
+									<br>
+									<p>
+											Utilice <a href="{% url 'mis datos' %}">Mis Datos</a> para modificar la información relacionada a su usuario. Podrá modificar su nombre de usuario, email,
+											Nombre y Apellido. Se recomienda mantener su información personal actualizada para el mejor provecho de las utilidades del <strong>Gestor de Licitaciones</strong>.
+									</p>
+									<br>
+									<h2>Cómo utilizo la API del Gestor?</h2>
+
+									<p>El <strong>Gestor de Licitaciones</strong> le permite a sus usuarios integrar todas sus soluciones técnológicas de manera rápida, estandarizada y sencilla mediante
+									el uso de su API. Con ella podrá acceder a información general de las licitaciones vigentes y sus licitaciones ofertadas, función que no es provista por la página oficial
+										de la Oficina Nacional de Contrataciones (ONC) el COMPR.AR. A continuación se mencionan todas las posibilidades que otorga la API:</p>
+									<h3>GET /licitaciones</h3>
+									<p>Este llamado le permitirá obtener el listado completo de licitaciones vigentes del Estado Nacional.</p>
+									<h3>GET /licitaciones/{numero_licitacion}</h3>
+									<p>Este llamado le permitirá obtener el listado completo de licitaciones vigentes del Estado Nacional.</p>
+									<h3>Autenticación</h3>
+									<br>
+									<h2>Qué hago si encuentro un problema?</h2>
+
+									<p>Si encuentra un problema al intentar registrarse, acceder a su cuenta o utilizar cualquiera de las herramientas del Gestor, por favor comuníquese con el desarrollador
+									utilizando la sección <a href="{% url 'contacto' %}">Contacto</a>, describiendo el email que desea utilizar de contacto y detallando lo ocurrido. En breve nos comunicaremos
+										con usted.</p>
+								</section>
+
+							</div>
+						</div>
+					</div>
+				</div>
+{% include "footer.html" %}
+	</body>
+</html>

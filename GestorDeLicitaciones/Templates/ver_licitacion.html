@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<head>
+    <meta charset="UTF-8">
+    <title>Ver Oferta</title>
+</head>
+<body>
+<!-- Banner -->
+    <div id="banner-wrapper">
+		<div class="container">
+			<div id="banner">
+				<h2>{{ licitacion.tipo }}: {{ licitacion.numero }}</h2>
+				<span>Vea y modifique su oferta.</span>
+			</div>
+		</div>
+	</div>
+
+			<!-- Main -->
+				<div id="main">
+					<div class="container">
+						<div class="row main-row">
+							<div class="col-12">
+            <section>
+                <h2>Numero:</h2> <h3>{{ licitacion.numero }}</h3>
+                <h2>Tipo:</h2> <h3>{{ licitacion.tipo }}</h3>
+                <h2>Nombre:</h2> <h3>{{ licitacion.nombre }}</h3>
+                <h2>Fecha y hora de apertura:</h2> <h3>{{ licitacion.fecha_apertura }}</h3>
+                <h2>Unidad ejecutora nro:</h2> <h3>{{ licitacion.unidad_ejecutora }}</h3>
+                <h2>Aperturado?</h2>
+                {% if licitacion.aperturado == True %}
+                <h3>Sí</h3>
+                {% else %}
+                <h3>No</h3>
+                {% endif %}
+
+    {% if anexo %}
+				<h2>Mis archivos anexos</h2>
+
+        <table style="width:100%" class="default">
+             <tr>
+                 <th style="width:20%"><h2>Nombre</h2></th>
+                 <th style="width:16%"><h2>Fecha</h2></th>
+                 <th><h2>Nombre de Archivo</h2></th>
+                 <th style="width:10%"><h2>Opciones</h2></th>
+             </tr>
+        {% for anx in anexo  %}
+            <tr>
+
+
+                    <td><h4>{{anx.nombre}}</h4> </td>
+                    <td><h4>{{anx.dateTime}}</h4> </td>
+                    <td><h4>{{anx.archivo}}</h4> </td>
+                    <td>
+                    <form action="/eliminarAnexo/" method="post">
+                        {% csrf_token %}
+                        <a href="{{anx.archivo.url}}" download>Descargar Archivo</a>
+                        <button type="submit" name="anexo" value="{{ anx.id }}">Eliminar Anexo</button>
+                    </form>
+                    </td>
+
+            </tr>
+        {% endfor  %}
+        </table>
+    {% endif %}
+        <br>
+             <h2>Agregar archivos</h2>
+                    <form action="/upload/" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h4>Nombre:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="nombre"></h4>
+                    <input type="file" name="archivo">
+                    <br>
+                    <button type="submit" name="Agregar">Agregar Anexo</button>
+                        <input name="licitacion" type="hidden" value="{{ licitacion.numero }}">
+                        </form>
+                </section>
+        </div></div></div></div>
+</body>
+{% include "footer.html" %}
+</html>

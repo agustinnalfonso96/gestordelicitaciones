@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<head>
+    <meta charset="UTF-8">
+    <title>Busqueda de tus Licitaciones</title>
+</head>
+<body>
+    <form action="/buscarMisLicitaciones/" method="get">
+        <input type="text" name="nombre_licitacion" placeholder="Buscar licitación...">
+        <input type="submit" name="buscar" value="Buscar">
+        <br>
+        <br>
+        <h4>Si no selecciona un patrón a buscar, se desplegarán todas las licitaciones ofertadas.</h4>
+    </form>
+</body>
+{% include "footer.html" %}
+</html>

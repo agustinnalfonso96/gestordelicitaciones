@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+<body>
+<!-- Banner -->
+    <div id="banner-wrapper">
+		<div class="container">
+			<div id="banner">
+				<h2>Aclare sus dudas</h2>
+				<span>Si tiene algun inconveniente o consulta, utilice éste medio para comunicarse con el administrador del sitio.</span>
+			</div>
+		</div>
+	</div>
+<!-- Main -->
+    <div id="main">
+		<div class="container">
+            <h2>Envíenos un mensaje:</h2> 
+			<div class="row main-row">
+                <div class="col-4 col-12-medium">
+        <form action="/contacto/" method="post">{% csrf_token %}
+        <h4>Asunto:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="asunto"></h4>
+        <h4>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email"></h4>
+        <h4>Mensaje:<textarea rows="15" cols="45" name="mensaje" ></textarea></h4>
+        <input type="submit" name="enviar">
+        		<div id="page-wrapper">
+                </div>
+           </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% include "footer.html" %}
+</html>
+
